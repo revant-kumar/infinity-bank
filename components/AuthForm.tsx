@@ -24,6 +24,8 @@ import { authFormSchema } from '@/lib/utils'
 import { Loader2 } from 'lucide-react'
 import { useRouter } from 'next/navigation'
 
+import { signIn, signUp } from '@/lib/actions/user.actions'
+
 
 const AuthForm = ({ type } : { type: string }) => {
     const router = useRouter();
@@ -47,15 +49,12 @@ const AuthForm = ({ type } : { type: string }) => {
         try{
           //Sign up with Appwrite & create plaid link token - to link bank account
           if(type === 'sign-up'){
-            const userData = {
-              // const newUser = await SignUp(data);
-
-              // setuser(newUser);
-            }
+            const newUser = await signUp(data);
+            setuser(newUser);
           }
 
-          if(type === 'sing-in'){
-            // const response = await SignIn({
+          if(type === 'sign-in'){
+            // const response = await signIn({
             //   email: data.email,
             //   password: data.password
             // })
