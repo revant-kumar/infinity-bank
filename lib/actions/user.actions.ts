@@ -5,9 +5,16 @@ import { createAdminClient, createSessionClient } from "../appwrite";
 import { cookies } from "next/headers";
 import { parseStringify } from "../utils";
 
-export const signIn = async () => {
+export const signIn = async ({ email, password }: signInProps) => {
     try{
         //Mutation / Database / Make fetch
+        //In sign-up we extracted an account from createAdminClient
+        //Here we try to create a session using email and password
+        const { account } = await createAdminClient();
+        const response = await account.createEmailPasswordSession(email, password);
+
+        return parseStringify(response);
+        
     } catch (error) {
         console.log('Error', error);
     }
@@ -46,7 +53,9 @@ export const signUp = async (userData: SignUpParams) => {
 export async function getLoggedInUser() {
     try {
       const { account } = await createSessionClient();
-      return await account.get();
+    //   return await account.get(); //returns null instead of an user
+    const user = account.get();
+    return parseStringify(user);
     } catch (error) {
       return null;
     }
