@@ -35,7 +35,7 @@ const MobileNav = ({ user }: MobileNavProps) => {
           <Link href="/" className="cursor-pointer flex items-center gap-1 px-4">
             <Image 
               src="/icons/logo.svg"
-              width={100}
+              width={50}
               height={50}
               alt="Infinity logo"
             />

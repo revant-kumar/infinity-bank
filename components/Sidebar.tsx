@@ -17,8 +17,8 @@ const Sidebar = ({ user }: SiderbarProps) => {
         <Link href="/" className="mb-12 cursor-pointer flex items-center gap-2">
           <Image 
             src="/icons/logo.svg"
-            width={100}
-            height={100}
+            width={50}
+            height={50}
             alt="Infinity logo"
             className="size-[24px] max-xl:size-14"
           />
